@@ -13,7 +13,6 @@ import static java.lang.Thread.sleep;
 
 public class Login {
 
-    @Test
     public void startLogin() throws InterruptedException {
 
         System.setProperty("webdriver.chrome.driver", "C:\\browserdriver\\chromedriver.exe");
@@ -25,7 +24,7 @@ public class Login {
         // Implicit Wait, any element from website can initiate the Page to load.
         driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS) ;
         String expectedTitle = "Instagram";
-        String actualTitle = "";
+        String actualTitle;
 
         // launch Fire fox and direct it to the Base URL
         driver.get(baseUrl);
@@ -33,8 +32,8 @@ public class Login {
         // get the actual value of the title
         actualTitle = driver.getTitle();
 //      // Wait until the page is ready within the specified timeout.
-        WebElement myDynamicElement = (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"react-root\"]/section/main/article/div[2]/div[2]/p/a")));
+//        WebElement myDynamicElement = (new WebDriverWait(driver, 10))
+//                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"react-root\"]/section/main/article/div[2]/div[2]/p/a")));
         WebElement login = driver.findElement((By.xpath("//*[@id=\"react-root\"]/section/main/article/div[2]/div[2]/p/a")));
         login.click();
         sleep(1000);
@@ -47,8 +46,8 @@ public class Login {
         driver.manage().window().maximize();
 
         sleep(4000);
-        WebElement myDynamicElement1= (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.presenceOfElementLocated(By.className("_gh2cz")));
+//        WebElement myDynamicElement1= (new WebDriverWait(driver, 10))
+//                .until(ExpectedConditions.presenceOfElementLocated(By.className("_gh2cz")));
 
         List<WebElement> linkElements = driver.findElements(By.className("_gh2cz"));
         String[] linkTexts = new String[linkElements.size()];
@@ -69,7 +68,7 @@ public class Login {
          * compare the actual title of the page with the expected one and print
          * the result as "Passed" or "Failed"
          */
-        Assert.assertTrue("Check the title is correct",expectedTitle.equals(actualTitle));
+        Assert.assertEquals("Check the title is correct",expectedTitle.equals(actualTitle));
         if (actualTitle.contentEquals(expectedTitle)){
             System.out.println("Test Passed!");
         } else {
