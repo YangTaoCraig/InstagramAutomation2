@@ -22,7 +22,7 @@ public class Login {
 
         String baseUrl = "https://www.instagram.com/";
         // Implicit Wait, any element from website can initiate the Page to load.
-        driver.manage().timeouts().implicitlyWait(11,TimeUnit.SECONDS) ;
+        driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS) ;
         String expectedTitle = "Instagram";
         String actualTitle;
 
