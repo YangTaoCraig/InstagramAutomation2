@@ -22,7 +22,7 @@ public class Login {
 
         String baseUrl = "https://www.instagram.com/";
         // Implicit Wait, any element from website can initiate the Page to load.
-        driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS) ;
+        driver.manage().timeouts().implicitlyWait(11,TimeUnit.SECONDS) ;
         String expectedTitle = "Instagram";
         String actualTitle;
 
@@ -68,7 +68,7 @@ public class Login {
          * compare the actual title of the page with the expected one and print
          * the result as "Passed" or "Failed"
          */
-        Assert.assertEquals("Check the title is correct",expectedTitle.equals(actualTitle));
+        Assert.assertTrue("Check the title is correct",expectedTitle.equals(actualTitle));
         if (actualTitle.contentEquals(expectedTitle)){
             System.out.println("Test Passed!");
         } else {
